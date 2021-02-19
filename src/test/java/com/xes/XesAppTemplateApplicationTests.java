@@ -1,10 +1,10 @@
-package com.xes.jsf;
+package com.xes;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class JsfJoinfacesJpaSpecificationsTemplateApplicationTests {
+class XesAppTemplateApplicationTests {
 
 	@Test
 	void contextLoads() {
