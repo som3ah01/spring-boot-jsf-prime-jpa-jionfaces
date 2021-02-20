@@ -13,8 +13,8 @@ Spring Boot JoinFaces Starter with PrimeFaces and JPA Custom Danamic Spacificati
 
 # Project Structure
 All (pages - images - css - javascript - index:file ) should be under;
-src\main\resources\META-INF\resources;
-1 - index:file;
-2 - css;
-3 - images;
-4 - pages;
+src\main\resources\META-INF\resources\
+1 - index:file\
+2 - css\
+3 - images\
+4 - pages\
