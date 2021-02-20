@@ -1,5 +1,6 @@
 package com.xes.bean;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
@@ -13,7 +14,7 @@ import org.springframework.data.domain.Sort.Direction;
 
 import com.xes.service.PrimeJpaSpacificationServiceLazyDataModel;
 
-public class PrimeBeanSpcificationsBuilderLazyDataModel<T> extends LazyDataModel<T> {
+public class PrimeBeanSpcificationsBuilderLazyDataModel<T> extends LazyDataModel<T> implements Serializable {
 
 //	@Autowired
 	private PrimeJpaSpacificationServiceLazyDataModel<T> jpaSpacificationServiceLazyDataModel;
@@ -24,17 +25,10 @@ public class PrimeBeanSpcificationsBuilderLazyDataModel<T> extends LazyDataModel
 		this.jpaSpacificationServiceLazyDataModel = jpaSpacificationServiceLazyDataModel;
 	}
 
-//	@Override
-//	public List<T> load(int first, int pageSize, Map<String, SortMeta> sortBy, Map<String, FilterMeta> filterBy) {
-//
-//		return super.load(first, pageSize, sortBy, filterBy);
-//	}
-
 	@Override
 	public List<T> load(int first, int pageSize, String sortField, SortOrder sortOrder,
 			Map<String, FilterMeta> filterBy) {
 
-//		return super.load(first, pageSize, sortField, sortOrder, filterBy);
 		int start = first / pageSize;
 		PageRequest pageRequest;
 		if (sortField != null) {
@@ -52,23 +46,6 @@ public class PrimeBeanSpcificationsBuilderLazyDataModel<T> extends LazyDataModel
 		return (List<T>) filteredList;
 	}
 
-//	public List<T> loadw(int first, int pageSize, String sortField, SortOrder sortOrder, Map<String, Object> filters) {
-//
-//		int start = first / pageSize;
-//		PageRequest pageRequest;
-//		if (sortField != null) {
-//			Direction direction = (SortOrder.ASCENDING.equals(SortOrder.valueOf(sortOrder.name()))) ? Direction.ASC
-//					: Direction.DESC;
-//			Sort sort = Sort.by(direction, sortField);
-//			pageRequest = PageRequest.of(start, pageSize, sort);
-//		} else {
-//			pageRequest = PageRequest.of(start, pageSize);
-//		}
-//
-//		Page<T> userPages = jpaSpacificationServiceLazyDataModel.findAllByMapFillterPageing(filters, pageRequest);
-//		List<T> filteredList = userPages.getContent();
-//		this.setRowCount((int) userPages.getTotalElements());
-//		return (List<T>) filteredList;
-//	}
+
 
 }

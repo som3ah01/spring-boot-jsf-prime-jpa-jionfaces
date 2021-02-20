@@ -22,8 +22,7 @@ import lombok.Setter;
 public class TemplateExampleBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@Getter
-	@Setter
+	@Getter @Setter
 	private PrimeBeanSpcificationsBuilderLazyDataModel<TemplateExampleEntity> templateExampleLazyDataModel;
 	@Autowired
 	private TemplateExampleService templateExampleService;
@@ -35,10 +34,5 @@ public class TemplateExampleBean implements Serializable {
 
 	public void onRowEdit(RowEditEvent event) {
 		templateExampleService.save((TemplateExampleEntity) event.getObject());
-	}
-	public void addNew() {
-		List list =new ArrayList<>();
-		list.add(new TemplateExampleEntity());
-		templateExampleLazyDataModel.setWrappedData(list);
 	}
 }
