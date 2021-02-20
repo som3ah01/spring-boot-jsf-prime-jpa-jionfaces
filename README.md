@@ -1,6 +1,10 @@
 # spring-boot-jsf-prime-jpa-jionfaces
 Spring Boot JoinFaces Starter with PrimeFaces and JPA Custom Danamic Spacifications with MySQL DB
 
+# Entry points
+http://localhost:8081/xes-app/  
+http://localhost:8081/xes-app/index.xes  
+
 # Based on Join-Faces Spring Boot Starter
 1 - JSF  
 2 - PrimeFaces 8  
