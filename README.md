@@ -25,6 +25,48 @@ src\main\resources\META-INF\resources\
  - pages
  - Template
 
+# What benifits from this packge fillter
+ > This is consest of two parts to limit Changes in the middel layers.  
+ > PrimeFaces Lazy Loading Data With JPA Custom Specifications.  
+ > When you need changes in Front End trying to limit most of changes in the front end in HTML And Enities in the most botton Layer.  
+ > Else you need some times implement your business logic.
+
+# How to use or
+ ###  com.xes.filtter
+  > Here All specifications classes implemented
+ ### com.xes.bean
+ > Any Bean you need it get benifits of PrimeLazyModol With JPA Spicifications.  
+ > You have to inect PrimeBeanSpcificationsBuilderLazyDataModel.  
+ > As TemplateExampleEntity example of any entity of your choose that will be used in the Front End XHTML.
+ > As templateExampleService the service layer that have include your repository 
+ ```
+ @Getter @Setter
+	private PrimeBeanSpcificationsBuilderLazyDataModel<TemplateExampleEntity> templateExampleLazyDataModel;
+ @PostConstruct
+	private void initLoads() {
+		templateExampleLazyDataModel = new PrimeBeanSpcificationsBuilderLazyDataModel<>(templateExampleService);
+	}
+ ```
+ ### com.xes.service
+ > The service class have to implement PrimeJpaSpacificationServiceLazyDataModel<TemplateExampleEntity>  
+ > As TemplateExampleEntity example of any entity of your choose that will be used in the Front End XHTML.  
+ > You have to implement And Override findAllByMapFillterPageing as below.  
+ > repo is your Repository interface as injted.  
+ ```
+ @Override
+	public Page<TemplateExampleEntity> findAllByMapFillterPageing(Map<String, FilterMeta> filters, Pageable pageable) {
+		SearchSpecificationsBuilder<TemplateExampleEntity> myBuilder = new SearchSpecificationsBuilderImpl<>();
+		filters.forEach((key, val) -> { myBuilder.with(key, ":", val);});
+		return repo.findAll(myBuilder.build(), pageable);
+	}
+ ```
+
+ ### com.xes.repo
+ > The interface Should extends JpaRepository<TemplateExampleEntity, Integer>,JpaSpecificationExecutor<TemplateExampleEntity>  
+ > As TemplateExampleEntity example of any entity of your choose that will be used in the Front End XHTML.  
+ > AS Integer the type id your entity ID  
+
+
 # Can try it with 
 ```
  mvn spring-boot:run
@@ -33,6 +75,7 @@ src\main\resources\META-INF\resources\
  ```
   ./mvnw spring-boot:run
  ```
+ 
  
  > Thanks :+1: if you have any comments to share with me :shipit:  
  > By @Ismail Shebl
