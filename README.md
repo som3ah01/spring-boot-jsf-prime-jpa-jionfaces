@@ -17,4 +17,5 @@ src\main\resources\META-INF\resources\
 1 - index:file\
 2 - css\
 3 - images\
-4 - pages
+4 - pages\
+5 - Template
